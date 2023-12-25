@@ -5,18 +5,28 @@ body {
   
   header {
     background-color: #333;
+    padding: 0.6rem;
+    text-align: justify;
+    display: flex;
+    justify-content: space-between;
     color: white;
-    padding: 1rem;
-    text-align: center;
+  }
+  
+  header a:link {
+    color: white
+  }
+
+  header a:visited {
+    color: white;
   }
   
   nav ul {
-    list-style-type: none;
+    color: white;
     margin: 0;
-    padding: 0;
   }
   
   nav li {
+    color: white;
     display: inline;
     margin-right: 20px;
   }
@@ -25,3 +35,27 @@ body {
     text-decoration: none;
     color: white;
   }
+
+  .carousel {
+    text-align: center;
+    display: flex;
+    align-items: baseline;
+    max-height: 50px;
+}
+
+footer {
+  background-color: #333;
+  padding: 0.6rem;
+  text-align: justify;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+footer a:link {
+  color: white
+}
+
+footer a:visited {
+  color: white;
+}
