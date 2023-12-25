@@ -1,9 +1,10 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
+    background-color: #333;
   }
   
-  header {
+header {
     background-color: #333;
     padding: 0.6rem;
     text-align: justify;
@@ -12,35 +13,56 @@ body {
     color: white;
   }
   
-  header a:link {
+header a:link {
     color: white
   }
 
-  header a:visited {
+header a:visited {
     color: white;
   }
   
-  nav ul {
+nav ul {
     color: white;
     margin: 0;
+
   }
   
-  nav li {
+nav li {
     color: white;
     display: inline;
     margin-right: 20px;
   }
   
-  nav a {
+nav a {
     text-decoration: none;
     color: white;
   }
 
-  .carousel {
-    text-align: center;
-    display: flex;
-    align-items: baseline;
-    max-height: 50px;
+.insta {
+
+}
+
+.carousel {
+  display:flex;
+  overflow: hidden;
+  margin: auto;
+  align-items: center;
+  width:100%;
+}
+
+.animation1 {
+  display:flex;
+  overflow: hidden;
+  margin: auto;
+  align-items: center;
+  height: 150px;
+  width:100%;
+}
+
+.missionStatement {
+  color:#c0c0c0;
+  font-size: 50px;
+  background-color: #272626;
 }
 
 footer {
