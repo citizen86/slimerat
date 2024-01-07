@@ -4,15 +4,6 @@ body {
     background-color: #333;
   }
   
-header {
-    background-color: #333;
-    padding: 0.6rem;
-    display: flex;
-    justify-content: center;
-    position: -webkit-sticky; /* Safari */
-  position: sticky;
-  }
-  
 header a:link {
     color: #c0c0c0
   }
@@ -21,19 +12,32 @@ header a:visited {
     color: white;
   }
   
-nav ul {
-    margin: auto;
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
   }
+
+header li {
+}
   
-nav li {
-    display: inline;
-    padding: 20px;
-  }
-  
-nav a {
-    text-decoration: none;
-    color: #c0c0c0;
-  }
+header a {
+  display: flex;
+  flex-wrap:nowrap;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-inline: 20px;
+  text-decoration: none;
+  height: 32px;
+}
 
 .social {
   vertical-align: center;
@@ -130,17 +134,19 @@ nav a {
 
 footer {
   background-color: #333;
-    padding: 0.6rem;
     display: flex;
     justify-content: center;
+    color: rgb(145, 145, 145);
+    margin-bottom: 10px;
 }
 
-footer a:link {
-  color: rgb(255, 255, 255);
-}
-
-footer a:visited {
-  color: white;
+#lightbox {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 1);
 }
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
