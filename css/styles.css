@@ -9,6 +9,8 @@ header {
     padding: 0.6rem;
     display: flex;
     justify-content: center;
+    position: -webkit-sticky; /* Safari */
+  position: sticky;
   }
   
 header a:link {
@@ -78,6 +80,11 @@ nav a {
   width: 33.33%;
 }
 
+.image4 {
+  display:flex;
+  width: 25%;
+}
+
 .image6 {
   display:flex;
   width: 16.67%;
@@ -87,14 +94,28 @@ nav a {
   height: 200px;
 }
 
-.flexContainer1 {
+.flexContainer2 {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   width: 100%;
 }
 
-.flexContainer2 {
+.flexContainer3 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.flexContainer4 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.flexContainer6 {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -109,15 +130,13 @@ nav a {
 
 footer {
   background-color: #333;
-  padding: 0.6rem;
-  text-align: justify;
-  justify-content: center;
-  display: flex;
-  margin: auto;
+    padding: 0.6rem;
+    display: flex;
+    justify-content: center;
 }
 
 footer a:link {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 footer a:visited {
@@ -126,19 +145,38 @@ footer a:visited {
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 500px) {
-  .flexContainer1 {
+  
+  .flexContainer2 {
     flex-direction: column;
     align-items: center;
   }
-  .flexContainer2 {
+  
+  .flexContainer3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flexContainer6 {
     flex-wrap: wrap;
   }
+
+  .flexContainer4 {
+    flex-wrap: wrap;
+  }
+
   .image2 {
     width: 100%;
   }
+
   .image3 {
     width: 100%;
   }
+  
+  .image4 {
+    width: 50%;
+  }
+
   .image6 {
     width: 50%;
+  }
 }
