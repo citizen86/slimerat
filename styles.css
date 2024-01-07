@@ -76,6 +76,10 @@ footer {
   margin-bottom: 5px;
 }
 
+.catBanner img {
+  width:100%;
+}
+
 .catQuote {
   color:#c0c0c0;
   font-size: 50px;
