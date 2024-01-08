@@ -17,29 +17,6 @@ body {
     height: 32px;
   }
   
-/* header ul {
-  display: flex;
-  background-color: #333;
-  align-items: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  }
-
-header li {
-  justify-content: center;
-}
-  
-header a {
-  display: flex;
-  flex-wrap:nowrap;
-  color: white;
-  padding: 10px;
-  margin-inline: 20px;
-  height: 32px;
-} */
-
 .social {
   vertical-align: center;
   height: 16px;
@@ -159,6 +136,10 @@ header a {
   display:flex;
   padding: .5% .5%;
   width: 16.67%;
+}
+
+footer {
+  
 }
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
