@@ -139,7 +139,9 @@ body {
 }
 
 footer {
-  
+  color: white;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
