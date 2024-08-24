@@ -1,6 +1,6 @@
 * {
-  padding: 0;
-  margin: 0;
+  padding: 0%;
+  margin: 0%;
   box-sizing: border-box;
 }
 
@@ -10,18 +10,18 @@ body {
     background-color: #272626;
   }
 
-.nav {
+  .nav {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 7%;
     padding: 1%;
-}
+  }
 
-.nav img {
+  .nav img {
     height: 32px;
-}
+  }
   
 .social {
   vertical-align: center;
@@ -34,11 +34,25 @@ body {
   margin: auto;
   align-items: center;
   width:100%;
-  margin-bottom: .5%;
+  margin-bottom: 5px;
 }
 
 .catBanner img {
   width:100%;
+}
+
+.catQuote {
+  color:#c0c0c0;
+  font-size: 50px;
+  background-color: #272626;
+}
+
+.dogBanner {
+  display:flex;
+  overflow: hidden;
+  margin: auto;
+  align-items: center;
+  width: 100%;
 }
 
 .animation1 {
@@ -46,77 +60,25 @@ body {
   overflow: hidden;
   margin: auto;
   align-items: center;
-  width:100%;
-}
-
-.bigContainer {
-  width:100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.flexContainer3 {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
   width: 100%;
-}
-
-.image3 {
-  display:flex;
-  padding: .5% .5%;
-  object-fit: cover;
-  width: 33%;
-  cursor: pointer;
 }
 
 .flexContainer2 {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  justify-content: center;
   width: 100%;
+  overflow: hidden;
+  color:#c0c0c0;
+  font-size: 50px;
+  text-indent: 10%;
+  background-color: #272626;
 }
 
 .image2 {
   display:flex;
   padding: .5% .5%;
-  object-fit: cover;
-  width: 49%;
-  cursor: pointer;
-}
-
-.flexContainer6 {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
-  width: 100%;
-}
-
-.image6 {
-  display:flex;
-  padding: .5% .5%;
-  object-fit: cover;
-  width: 15.66%;
-  cursor: pointer;
-}
-
-.flexContainer4 {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: center;
-  width: 100%;
-}
-
-.image4 {
-  display:flex;
-  padding: .5% .5%;
-  object-fit: cover;
-  width: 24%;
-  cursor: pointer;
+  width: 50%;
 }
 
 .flexContainer66 {
@@ -124,47 +86,66 @@ body {
   flex-direction: row;
   align-items: stretch;
   width: 100%;
+  overflow: hidden;
+  color:#c0c0c0;
+  font-size: 50px;
+  text-indent: 10%;
+  background-color: #272626;
 }
 
 .image66 {
   display:flex;
   padding: .5% .5%;
-  object-fit: cover;
   width: 66.6%;
-  cursor: pointer;
 }
 
 .image33 {
   display:flex;
   padding: .5% .5%;
-  object-fit: cover;
   width: 33.3%;
-  cursor: pointer;
 }
 
-footer{
-  color: rgb(134, 134, 134);
-  text-align: center;
-}
-
-#lightboxBG {
-  position: fixed;
-  z-index: 150;
-  top: 0;
+.flexContainer3 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: none;
 }
 
-#lightboxBG.active {
-  display: grid;
-  place-items: center;
+.image3 {
+  display:flex;
+  padding: .5% .5%;
+  width: 33.33%;
 }
 
-#lightboxIMG {
-  max-width: 80%;
-  max-height: 80%;
+.flexContainer4 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.image4 {
+  display:flex;
+  padding: .5% .5%;
+  width: 25%;
+}
+
+.flexContainer6 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
+
+.image6 {
+  display: flex;
+  padding: .5% .5%;
+  width: 16.625%;
+}
+
+footer {
+  
 }
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
