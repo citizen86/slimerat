@@ -27,34 +27,7 @@ function cycleFeature(feature) {
 }
 
 // Function to download the image
-/*
-function downloadImage() {
-    const canvas = document.getElementById('portraitCanvas');
-    const ctx = canvas.getContext('2d');
 
-    // Get the images
-    const baseImage = document.getElementById('baseImg');
-    const eyesImage = document.getElementById('eyesImg');
-    const noseImage = document.getElementById('noseImg');
-
-    // Set canvas dimensions
-    canvas.width = baseImage.naturalWidth;
-    canvas.height = baseImage.naturalHeight;
-
-    // Draw images onto the canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
-    ctx.drawImage(baseImage, 0, 0); // Draw the base image
-    ctx.drawImage(noseImage, 0, 0); // Draw the nose image
-    ctx.drawImage(eyesImage, 0, 0); // Draw the eyes image
-
-    // Create a download link
-    const link = document.createElement('a');
-    link.download = 'custom-portrait.png'; // File name
-    link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
-    link.click(); // Trigger the download
-}
-
-*/
 
 function downloadImage() {
     const canvas = document.getElementById('portraitCanvas');
@@ -84,7 +57,8 @@ function downloadImage() {
 
         // Create a download link
         const link = document.createElement('a');
-        link.download = 'custom-portrait.png'; // File name
+        const randomFileName = `goodkitty${Date.now()}.png`;
+        link.download = randomFileName; // File name
         link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
         link.click(); // Trigger the download
     });

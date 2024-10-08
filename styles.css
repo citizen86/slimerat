@@ -25,9 +25,12 @@ body {
   align-items: center; /* Centers items vertically */
 }
 
+.nav a {
+  margin: 0 30px;
+}
+
 .nav img {
-    height: 32px;
-    margin: 0 30px;
+  height: 32px;
 }
   
 .social {
@@ -42,6 +45,7 @@ body {
   align-items: center;
   width:100%;
   margin-bottom: 5px;
+  margin-top:30px
 }
 
 .catBanner img {
@@ -276,10 +280,16 @@ html, body {
 }
 
 .controls {
-  margin-top: 10px; /* Space above buttons */
+  display: grid;                  /* Use CSS grid layout */
+  grid-template-columns: repeat(3, 1fr);  /* Create 3 equal-width columns */
+  grid-gap: 20px;                 /* Space between the buttons */
+  width: 100%;                    /* Full width of the portrait container */
+  max-width: 60%;                 /* Optional: Limit max width */
+  margin-top: 20px;
 }
 
-button {
-  margin: 10px; /* Space around buttons */
-  padding: 10px;
+.control-button {
+  cursor: pointer;                /* Show pointer when hovering over buttons */
+  width: 100%;                    /* Make buttons take full available width in their grid cell */
+  max-width: 200px;               /* Set a maximum width for buttons */
 }

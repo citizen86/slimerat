@@ -4,36 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Portrait Creator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catcreator.css">
 </head>
 <body>
-    <div id="navbar"></div>
-    
+
+    <!-- Static header -->
+    <header>
+        <div class="nav">
+            <a href="index.html"><img src="menu/home.png" alt="Home"></a>
+            <a href="catcreator.html"><img src="menu/catcreator.png" alt="Cat Creator"></a>
+            <a href="mailto:kyle@kyleschuler.com"><img src="menu/mail.png" alt="Mail"></a>
+            <a href="https://www.etsy.com/shop/kylesetsyshop" target="_blank"><img src="menu/store.png" alt="Store"></a>
+        </div>
+    </header>
+
+    <!-- Portrait page -->
     <div class="portrait-page">
+        <!-- Container for the images that will be stacked on top of each other -->
         <div class="portrait-container">
             <img id="baseImg" src="images/catcreator/base/catbase1.png" alt="Base Shape">
             <img id="eyesImg" src="images/catcreator/eyes/cateyes1.png" alt="Eyes">
             <img id="noseImg" src="images/catcreator/nose/catnose1.png" alt="Nose">
         </div>
 
+        <!-- Controls to select different features -->
         <div class="controls">
-            <button onclick="cycleFeature('base')">Next Base Shape</button>
-            <button onclick="cycleFeature('eyes')">Next Eyes</button>
-            <button onclick="cycleFeature('nose')">Next Nose</button>
-            <button onclick="downloadImage()">Download Image</button>
+            <img src="images/catcreator/catcreatormenu/basemenu.png" alt="Next Base Shape" onclick="cycleFeature('base')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/eyemenu.png" alt="Next Eyes" onclick="cycleFeature('eyes')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/nosemenu.png" alt="Next Nose" onclick="cycleFeature('nose')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/downloadmenu.png" alt="Download Image" onclick="downloadImage()" class="control-button">
+            <img src="images/catcreator/catcreatormenu/downloadmenu.png" alt="Download Image" onclick="downloadImage()" class="control-button">
+            <img src="images/catcreator/catcreatormenu/downloadmenu.png" alt="Download Image" onclick="downloadImage()" class="control-button">
         </div>
 
-        <canvas id="portraitCanvas" style="display:none;"></canvas> <!-- Hidden canvas -->
+        <!-- Hidden canvas for downloading the final portrait -->
+        <canvas id="portraitCanvas" style="display:none;"></canvas>
     </div>
 
+    <!-- Link to external JavaScript file -->
     <script src="catcreator.js"></script>
-    <div id="navbar"></div>
-    <script>
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-            });
-    </script>
+
 </body>
 </html>
