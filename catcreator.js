@@ -46,27 +46,19 @@ function downloadImage() {
     ctx.drawImage(noseImage, 0, 0); // Draw the nose image
     ctx.drawImage(eyesImage, 0, 0); // Draw the eyes image
 
-    // Convert the canvas content to a Blob
-    canvas.toBlob(function(blob) {
-        const link = document.createElement('a');
-        const url = URL.createObjectURL(blob); // Create a URL for the Blob
+    // Generate the data URL from the canvas
+    const dataURL = canvas.toDataURL('image/png');
 
-        // Set download attributes
-        link.href = url;
-        link.download = 'custom-portrait.png'; // File name
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'custom-portrait.png'; // File name for the download
 
-        // For mobile: check if automatic download is supported
-        if (navigator.userAgent.match(/Mobi/)) {
-            // On mobile devices, open the image in a new tab
-            window.open(url, '_blank');
-        } else {
-            // For desktops or browsers that support it, auto-download the file
-            link.click();
-        }
-
-        // Cleanup: revoke the Blob URL after the download
-        setTimeout(() => {
-            URL.revokeObjectURL(url);
-        }, 100);
-    }, 'image/png'); // MIME type
+    // For mobile browsers: open in a new tab
+    if (navigator.userAgent.match(/Mobi/)) {
+        window.open(dataURL, '_blank'); // Open image in new tab for manual download
+    } else {
+        // For desktop browsers: automatically download the file
+        link.click();
+    }
 }
