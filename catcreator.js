@@ -56,14 +56,9 @@ function downloadImage() {
         link.download = 'custom-portrait.png'; // File name
 
         // For mobile: check if automatic download is supported
-        if (navigator.userAgent.match(/Mobi/)) {
-            // On mobile devices, open the image in a new tab
-            window.open(url, '_blank');
-        } else {
             // For desktops or browsers that support it, auto-download the file
             link.click();
-        }
-
+            
         // Cleanup: revoke the Blob URL after the download
         setTimeout(() => {
             URL.revokeObjectURL(url);
