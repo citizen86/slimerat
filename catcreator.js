@@ -18,7 +18,7 @@ function cycleFeature(feature) {
     currentSelection[feature] = (currentSelection[feature] + 1) % totalOptions;
     const newValue = features[feature][currentSelection[feature]];
     const imgElement = document.getElementById(`${feature}Img`);
-    const imgSrc = `images/catbuilder/${feature}/${newValue}.png`;
+    const imgSrc = `images/catcreator/${feature}/${newValue}.png`;
     imgElement.src = imgSrc;
 
     imgElement.onerror = function() {
