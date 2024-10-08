@@ -46,9 +46,9 @@ function downloadImage() {
     ctx.drawImage(noseImage, 0, 0); // Draw the nose image
     ctx.drawImage(eyesImage, 0, 0); // Draw the eyes image
 
-    // Convert the canvas to a Blob
-    canvas.toBlob(function(blob) {
-        // Use FileSaver.js to save the Blob
-        saveAs(blob, 'custom-portrait.png'); // 'saveAs' is provided by FileSaver.js
-    }, 'image/png');
+    // Create a download link
+    const link = document.createElement('a');
+    link.download = 'custom-portrait.png'; // File name
+    link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
+    link.click(); // Trigger the download
 }
