@@ -14,25 +14,41 @@ const currentSelection = {
 
 // Function to cycle through feature options
 function cycleFeature(feature) {
-    // Get the total number of options for this feature
     const totalOptions = features[feature].length;
-
-    // Update the current selection index, wrapping back to 0 if needed
     currentSelection[feature] = (currentSelection[feature] + 1) % totalOptions;
-
-    // Get the new value to display
     const newValue = features[feature][currentSelection[feature]];
-
-    // Update the image source
     const imgElement = document.getElementById(`${feature}Img`);
     const imgSrc = `images/${feature}/${newValue}.png`;
     imgElement.src = imgSrc;
 
-    // Log for debugging
-    console.log(`Updated ${feature} to: ${imgSrc}`);
-
-    // Check if the image fails to load
     imgElement.onerror = function() {
         console.error(`Image failed to load: ${imgSrc}`);
     };
+}
+
+// Function to download the image
+function downloadImage() {
+    const canvas = document.getElementById('portraitCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Get the images
+    const baseImage = document.getElementById('baseImg');
+    const eyesImage = document.getElementById('eyesImg');
+    const noseImage = document.getElementById('noseImg');
+
+    // Set canvas dimensions
+    canvas.width = baseImage.naturalWidth;
+    canvas.height = baseImage.naturalHeight;
+
+    // Draw images onto the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawings
+    ctx.drawImage(baseImage, 0, 0); // Draw the base image
+    ctx.drawImage(noseImage, 0, 0); // Draw the nose image
+    ctx.drawImage(eyesImage, 0, 0); // Draw the eyes image
+
+    // Create a download link
+    const link = document.createElement('a');
+    link.download = 'custom-portrait.png'; // File name
+    link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
+    link.click(); // Trigger the download
 }

@@ -4,39 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Portrait Creator</title>
-    <!-- Link to the external CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<div id="navbar"></div>
-
 <body>
-    <div class = "portrait-page">
+    <div id="navbar"></div>
+    
+    <div class="portrait-page">
+        <div class="portrait-container">
+            <img id="baseImg" src="images/base/oval.png" alt="Base Shape">
+            <img id="eyesImg" src="images/eyes/medium.png" alt="Eyes">
+            <img id="noseImg" src="images/nose/medium.png" alt="Nose">
+        </div>
 
-    <!-- Portrait display area with overlay images -->
-    <div class="portrait-container">
-        <img id="baseImg" src="images/base/oval.png" alt="Base Shape">
-        <img id="eyesImg" src="images/eyes/medium.png" alt="Eyes">
-        <img id="noseImg" src="images/nose/medium.png" alt="Nose">
+        <div class="controls">
+            <button onclick="cycleFeature('base')">Next Base Shape</button>
+            <button onclick="cycleFeature('eyes')">Next Eyes</button>
+            <button onclick="cycleFeature('nose')">Next Nose</button>
+            <button onclick="downloadImage()">Download Image</button>
+        </div>
+
+        <canvas id="portraitCanvas" style="display:none;"></canvas> <!-- Hidden canvas -->
     </div>
 
-    <!-- Controls for selecting facial features -->
-    <div class="controls">
-        <button onclick="cycleFeature('base')">Next Base Shape</button>
-        <button onclick="cycleFeature('eyes')">Next Eyes</button>
-        <button onclick="cycleFeature('nose')">Next Nose</button>
-    </div>
-
-    <!-- Link to the external JavaScript file -->
     <script src="catcreator.js"></script>
-    </div>
-
-<div id="navbar"></div>
-<script>
-   fetch('navbar.html')
-     .then(response => response.text())
-     .then(data => {
-       document.getElementById('navbar').innerHTML = data;
-     });
-</script>
+    <div id="navbar"></div>
+    <script>
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
