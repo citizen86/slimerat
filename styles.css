@@ -256,6 +256,7 @@ html, body {
   align-items: center;     /* Center items horizontally */
   height: 100vh;          /* Full viewport height */
   text-align: center;
+  padding-top: 3%;
 }
 
 .portrait-container {
@@ -275,9 +276,10 @@ html, body {
 }
 
 .controls {
+  margin-top: 10px; /* Space above buttons */
 }
 
 button {
   margin: 10px; /* Space around buttons */
-  padding:10px 20px;
+  padding: 10px;
 }
