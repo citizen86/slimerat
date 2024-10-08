@@ -20,6 +20,9 @@ body {
   background-color: rgba(0, 0, 0, 0.6); /* Ensure it's visible, you can change the color */
   padding: 5px;
   z-index: 1000; /* Ensures it stays above other elements */
+  display: flex;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Centers items vertically */
 }
 
 .nav img {
@@ -239,40 +242,42 @@ footer{
   }
 }
 
-/*make a cata*/
 
-body {
-  font-family: Arial, sans-serif;
+/* cat creator */
+html, body {
+  height: 100%; /* Ensure the body takes the full height of the viewport */
+  margin: 0;    /* Remove default margin */
+}
+
+.portrait-page {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center;     /* Center items horizontally */
+  height: 100vh;          /* Full viewport height */
   text-align: center;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+.portrait-container {
+  width: 100%;           /* 60% of the viewport width (adjust as needed) */
+  position: relative;    /* Make it a positioning context */
+  padding-top: 80vh;      /* Maintain a 4:3 aspect ratio (height is 75% of width) */
+  overflow: hidden;      /* Hide any overflow */
 }
 
-#portrait {
-  position: relative;
-  width: 300px;
-  height: 450px;
-  margin: 20px auto;
-}
-
-#portrait img {
-  position: absolute;
+.portrait-container img {
+  position: absolute;    /* Position images absolutely */
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%;          /* Make images cover the full container */
   height: 100%;
+  object-fit: contain;   /* Maintain aspect ratio of images */
 }
 
 .controls {
-  margin-top: 20px;
 }
 
 button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
+  margin: 10px; /* Space around buttons */
+  padding:10px 20px;
 }

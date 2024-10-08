@@ -13,11 +13,14 @@
   <header>
   </header>
   <main>
-    <div class="nav">
-        <a href="index.html"><img src="menu/home.png" alt="cat logo"></a>
-        <a href="mailto:kyle@kyleschuler.com"><img src="menu/mail.png" alt="mail logo"></a>
-        <a href="https://www.etsy.com/shop/kylesetsyshop"><img src="menu/store.png" alt="store logo"></a>
-    </div>
+    <div id="navbar"></div>
+<script>
+   fetch('navbar.html')
+     .then(response => response.text())
+     .then(data => {
+       document.getElementById('navbar').innerHTML = data;
+     });
+</script>
     <div class="catBanner">
       <img src="images/bannercat.png" alt="banner cat">
     </div>
