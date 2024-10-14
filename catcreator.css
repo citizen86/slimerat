@@ -1,4 +1,3 @@
-/* Global settings */
 * {
     padding: 0;
     margin: 0;
@@ -27,7 +26,7 @@ body {
 }
 
 .nav a {
-    margin: 0 15px;
+    margin: 0 30px;
 }
 
 .nav img {
@@ -64,7 +63,7 @@ body {
     object-fit: contain;
 }
 
-/* Control button layout (2x3 grid) */
+/* Control button layout (3x2 grid) */
 .controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
