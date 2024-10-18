@@ -18,6 +18,18 @@ const currentSelection = {
     nose: 0
 };
 
+// Function to apply mask to pattern
+function applyMask() {
+    const maskImgSrc = `images/catcreator/mask/${features.mask[currentSelection.mask]}.png`;
+    const patternImg = document.getElementById('patternImg');
+    patternImg.style.maskImage = `url(${maskImgSrc})`;
+    patternImg.style.webkitMaskImage = `url(${maskImgSrc})`; // For Safari support
+
+    // Hide the actual mask image
+    const maskImg = document.getElementById('maskImg');
+    maskImg.style.display = 'none';
+}
+
 // Function to cycle through feature options
 function cycleFeature(feature) {
     const totalOptions = features[feature].length;
@@ -27,10 +39,9 @@ function cycleFeature(feature) {
     const imgSrc = `images/catcreator/${feature}/${newValue}.png`;
     imgElement.src = imgSrc;
 
-    // Update mask-image if the feature is 'mask'
+    // If we're cycling the mask, update the mask on the pattern image
     if (feature === 'mask') {
-        const patternImg = document.getElementById('patternImg');
-        patternImg.style.maskImage = `url(${imgSrc})`;
+        applyMask();
     }
 
     imgElement.onerror = function() {
@@ -38,61 +49,84 @@ function cycleFeature(feature) {
     };
 }
 
-// Function to download the image
+// Function to download the portrait image as a PNG
 function downloadImage() {
-    const canvas = document.getElementById('portraitCanvas');
+    const canvas = document.getElementById('portraitCanvas'); // Main hidden canvas
     const ctx = canvas.getContext('2d');
 
-    // Get the images
-    const backgroundImage = document.getElementById('backgroundImg');
-    const patternImage = document.getElementById('patternImg');
-    const maskImage = document.getElementById('maskImg'); // This line may be problematic as you don't have #maskImg in HTML
-    const outlineImage = document.getElementById('outlineImg');
-    const eyesImage = document.getElementById('eyesImg');
-    const noseImage = document.getElementById('noseImg');
+    // Create a temporary canvas for handling the mask and pattern
+    const tempCanvas = document.createElement('canvas');
+    const tempCtx = tempCanvas.getContext('2d');
+    tempCanvas.width = canvas.width = 400;  // Ensure dimensions are the same
+    tempCanvas.height = canvas.height = 600;
 
-    // Set canvas dimensions
-    canvas.width = outlineImage.naturalWidth;
-    canvas.height = outlineImage.naturalHeight;
+    // Get the images to render
+    const backgroundImage = `images/catcreator/background/${features.background[currentSelection.background]}.png`;
+    const patternImage = `images/catcreator/pattern/${features.pattern[currentSelection.pattern]}.png`;
+    const maskImage = `images/catcreator/mask/${features.mask[currentSelection.mask]}.png`;
+    const outlineImage = `images/catcreator/outline/${features.outline[currentSelection.outline]}.png`;
+    const eyesImage = `images/catcreator/eyes/${features.eyes[currentSelection.eyes]}.png`;
+    const noseImage = `images/catcreator/nose/${features.nose[currentSelection.nose]}.png`;
 
-    // Clear previous drawings
+    // Clear the main canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw images onto the canvas once they are loaded
+    // Draw images to canvas (in the correct order)
     Promise.all([
-        loadImage(backgroundImage.src),
-        loadImage(patternImage.src),
-        loadImage(maskImage.src), // Ensure this loads correctly
-        loadImage(outlineImage.src),
-        loadImage(eyesImage.src),
-        loadImage(noseImage.src)
+        loadImage(backgroundImage),  // Background
+        loadImage(patternImage),     // Pattern
+        loadImage(maskImage),        // Mask
+        loadImage(outlineImage),     // Outline
+        loadImage(eyesImage),        // Eyes
+        loadImage(noseImage)         // Nose
     ]).then((images) => {
-        ctx.drawImage(images[0], 0, 0); // Background
-        ctx.drawImage(images[1], 0, 0); // Pattern
-        ctx.globalCompositeOperation = 'destination-in';
-        ctx.drawImage(images[2], 0, 0); // Mask
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(images[3], 0, 0); // Outline
-        ctx.drawImage(images[4], 0, 0); // Eyes
-        ctx.drawImage(images[5], 0, 0); // Nose
+        // Step 1: Draw the background first on the main canvas
+        ctx.drawImage(images[0], 0, 0, canvas.width, canvas.height);
 
-        // Create a download link
+        // Step 2: Draw the pattern and mask on the temporary canvas
+        tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+        tempCtx.drawImage(images[1], 0, 0, tempCanvas.width, tempCanvas.height); // Draw pattern
+        tempCtx.globalCompositeOperation = 'destination-in'; // Apply mask to pattern
+        tempCtx.drawImage(images[2], 0, 0, tempCanvas.width, tempCanvas.height); // Draw mask
+        tempCtx.globalCompositeOperation = 'source-over'; // Reset composite mode
+
+        // Step 3: Draw the temporary canvas (pattern with mask) onto the main canvas
+        ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+
+        // Step 4: Draw the outline, eyes, and nose on the main canvas
+        ctx.drawImage(images[3], 0, 0, canvas.width, canvas.height); // Outline
+        ctx.drawImage(images[4], 0, 0, canvas.width, canvas.height); // Eyes
+        ctx.drawImage(images[5], 0, 0, canvas.width, canvas.height); // Nose
+
+        // Generate a filename with the current date and time
+        const fileName = `goodkitty${Date.now()}.png`; // Example: custom-portrait_2024-10-18T14-30-00.png
+
+        // Convert canvas to image and trigger download
+        const image = canvas.toDataURL('image/png');
         const link = document.createElement('a');
-        const randomFileName = `goodkitty${Date.now()}.png`;
-        link.download = randomFileName; // File name
-        link.href = canvas.toDataURL('image/png'); // Convert canvas to data URL
-        link.click(); // Trigger the download
-    }).catch(error => {
-        console.error('Error downloading image:', error);
+        link.href = image;
+        link.download = fileName; // Use the randomized filename
+        link.click();
+    }).catch(err => {
+        console.error('Error rendering images to canvas:', err);
     });
 }
 
-// Helper function to load an image
+// Helper function to load images
 function loadImage(src) {
     return new Promise((resolve, reject) => {
         const img = new Image();
+        img.crossOrigin = 'anonymous'; // Ensure cross-origin works for canvas
         img.onload = () => resolve(img);
         img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
         img.src = src;
     });
 }
+
+// Apply the mask when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    applyMask(); // Apply the initial mask to the pattern on page load
+});
+
+// Event listener for the download button
+document.getElementById('downloadButton').addEventListener('click', downloadImage);
