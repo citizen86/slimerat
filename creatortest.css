@@ -45,20 +45,18 @@ body {
 /* Portrait page layout */
 .portrait-page {
     display: grid;
+    width: 400px;
+    padding-top: 5%;
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 /* Portrait container (for images) */
 .portrait-container {
     position: relative;
-    width: 100vh;
-    height: 100vh;
-    max-width: 400px;
-    max-height: 600px;
-
+    width: 400px;
+    height: 600px;
 }
 
 .portrait-container img {
@@ -70,35 +68,15 @@ body {
     object-fit: contain;
 }
 
-/* Ensure that the pattern is masked by the mask image */
-#patternImg {
-    position: absolute;
-    top: 0;
-    left: 0px;
-    width: 100%; /* Ensure it scales with the container */
-    height: 100%; /* Ensure it scales with the container */
-    mask-image: url('images/catcreator/mask/catmask1.png'); /* Use the mask image */
-    mask-mode: alpha; /* Mask by the alpha channel */
-    mask-size: contain; /* Ensure the mask fits */
-    mask-repeat: no-repeat; /* Prevent repeating */
-    object-fit: contain;
-}
-
-/* Ensure the rest of the images are properly positioned */
- #mask, #backgroundImg, #outlineImg, #eyesImg, #noseImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 /* Control button layout (3x2 grid) */
 .controls {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     grid-gap: 1%;
-    width: 100vw;
+    width: 400px;
     max-width: 400px;
     margin-top: 1%;
     z-index: 1;
@@ -110,4 +88,53 @@ body {
     cursor: pointer;
 }
 
-/* Responsive styles */
+/* Apply mask to the pattern image */
+#patternImg {
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block; /* Ensure pattern is visible */
+}
+
+@media (max-width: 500px) {
+
+    .portrait-page {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    
+    }
+    
+    /* Portrait container (for images) */
+    .portrait-container {
+        position: relative;
+        width: 300px;
+        height: 450px;
+    }
+    
+    .portrait-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1%;
+    width: 300px;
+    margin-top: 1%;
+    z-index: 1;
+}
+}

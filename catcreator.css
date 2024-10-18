@@ -9,6 +9,11 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #272626;
     width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* Navbar styles */
@@ -33,34 +38,27 @@ body {
     height: 32px;
 }
 
+/* -------------------------------- */
+
+
 
 /* Portrait page layout */
 .portrait-page {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
     text-align: center;
-    min-height: 100vh;
+
 }
 
 /* Portrait container (for images) */
 .portrait-container {
     position: relative;
-    width: 100vw;
-    max-width: 600px;
-    height: 80vw;
+    width: 100vh;
+    height: 100vh;
+    max-width: 400px;
     max-height: 600px;
-    margin-bottom: 1%;
-}
 
-#maskImg {
-    position: relative; /* Positioning remains the same */
-    top: 0; /* Align to top */
-    left: 0; /* Align to left */
-    width: 100%; /* Ensure it scales with the container */
-    height: 100%; /* Ensure it scales with the container */
 }
 
 .portrait-container img {
@@ -74,7 +72,7 @@ body {
 
 /* Ensure that the pattern is masked by the mask image */
 #patternImg {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0px;
     width: 100%; /* Ensure it scales with the container */
@@ -83,10 +81,11 @@ body {
     mask-mode: alpha; /* Mask by the alpha channel */
     mask-size: contain; /* Ensure the mask fits */
     mask-repeat: no-repeat; /* Prevent repeating */
+    object-fit: contain;
 }
 
 /* Ensure the rest of the images are properly positioned */
- #backgroundImg, #outlineImg, #eyesImg, #noseImg {
+ #mask, #backgroundImg, #outlineImg, #eyesImg, #noseImg {
     position: absolute;
     top: 0;
     left: 0;
@@ -99,8 +98,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1%;
-    width: 25vw;
-    max-width: 600px;
+    width: 100vw;
+    max-width: 400px;
     margin-top: 1%;
     z-index: 1;
 }
@@ -112,27 +111,3 @@ body {
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
-    .controls {
-        width: 55vw; /* Increase width of controls on smaller screens */
-    }
-
-    .control-button {
-        height: auto; /* Adjust height based on content */
-    }
-}
-
-@media (max-width: 500px) {
-    .portrait-container {
-        width: 90vw;
-        height: 90vw;
-    }
-
-    .controls {
-        width: 60vw; /* Ensure controls scale better on small screens */
-    }
-
-    .control-button {
-        height: auto;
-    }
-}
