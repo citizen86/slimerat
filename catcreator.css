@@ -46,7 +46,8 @@ body {
 .portrait-page {
     display: grid;
     width: 400px;
-    padding-top: 5%;
+    padding-top: 3%;
+    max-height: 100vh;
     justify-content: center;
     align-items: center;
     text-align: center;
