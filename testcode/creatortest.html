@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Portrait Creator</title>
+    <link rel="stylesheet" href="creatortest.css">
+</head>
+<body>
+
+    <!-- Static header -->
+    <header>
+        <div class="nav">
+            <a href="index.html"><img src="menu/home.png" alt="cat logo"></a>
+            <a href="catcreator.html"><img src="menu/catcreator.png" alt="cat creator"></a>
+            <a href="mailto:kyle@kyleschuler.com"><img src="menu/mail.png" alt="mail logo"></a>
+            <a href="https://www.etsy.com/shop/kylesetsyshop" target="_blank"><img src="menu/store.png" alt="store logo"></a>
+        </div>
+    </header>
+    
+    <div class="portrait-page">
+        <!-- Container for the images that will be stacked on top of each other -->
+        <div class="portrait-container">
+            <img id="backgroundImg" src="images/catcreator/background/background1.png" alt="Background">
+            <img id="patternImg" src="images/catcreator/pattern/catpattern1.png" alt="Pattern">
+            <img id="maskImg" src="images/catcreator/mask/catmask1.png" alt="Mask">
+            <img id="outlineImg" src="images/catcreator/outline/catoutline1.png" alt="Outline">
+            <img id="eyesImg" src="images/catcreator/eyes/cateyes1.png" alt="Eyes">
+            <img id="noseImg" src="images/catcreator/nose/catnose1.png" alt="Nose">
+        </div>
+        
+        <!-- Controls to select different features -->
+        <div class="controls">
+            <img src="images/catcreator/catcreatormenu/outlinemenu.png" alt="Next Outline" onclick="cycleFeature('outline'); cycleFeature('mask')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/eyemenu.png" alt="Next Eyes" onclick="cycleFeature('eyes')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/nosemenu.png" alt="Next Nose" onclick="cycleFeature('nose')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/patternmenu.png" alt="Next Pattern" onclick="cycleFeature('pattern'); applyMask()" class="control-button">
+            <img src="images/catcreator/catcreatormenu/backgroundmenu.png" alt="Next Background" onclick="cycleFeature('background')" class="control-button">
+            <img src="images/catcreator/catcreatormenu/downloadmenu.png" alt="Download Image" onclick="downloadImage()" class="control-button">
+        </div>
+    </div>
+
+    <!-- Hidden canvas for rendering the final portrait -->
+<canvas id="portraitCanvas" style="display:none;"></canvas>
+
+    <!-- Link to external JavaScript file -->
+    <script src="creatortest.js"></script>
+
+</body>
+</html>
